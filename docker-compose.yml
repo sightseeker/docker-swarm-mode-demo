@@ -1,0 +1,33 @@
+version: '2.4'
+services:
+  manager:
+    image: docker:stable-dind
+    hostname: manager
+    container_name: manager
+    privileged: true
+    networks:
+      - swarm-net
+  # docker-compose で起動するため deploy.replicas 要素は使えないのでworker3台分をコピペ
+  worker1:
+    image: docker:stable-dind
+    hostname: worker1
+    container_name: worker1
+    privileged: true
+    networks:
+      - swarm-net
+  worker2:
+    image: docker:stable-dind
+    hostname: worker2
+    container_name: worker2
+    privileged: true
+    networks:
+      - swarm-net
+  worker3:
+    image: docker:stable-dind
+    hostname: worker3
+    container_name: worker3
+    privileged: true
+    networks:
+      - swarm-net
+networks:
+  swarm-net:
