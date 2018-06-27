@@ -5,6 +5,13 @@ services:
     hostname: manager
     container_name: manager
     privileged: true
+    volumes:
+      - ./workspace:/workspace
+    ports:
+      - 80:80
+      # These publish ports for Example Stacks
+      - 5000:5000
+      - 5001:5001
     networks:
       - swarm-net
   # docker-compose で起動するため deploy.replicas 要素は使えないのでworker3台分をコピペ
